@@ -1,9 +1,9 @@
 class Api::V1::ProjectsController < ApplicationController
   before_action :set_up_project, only: [:show, :update, :destroy]
-
+  
   def index
     @projects = Project.all
-
+    
     render json: @projects
   end
 
@@ -40,6 +40,6 @@ class Api::V1::ProjectsController < ApplicationController
     end
 
     def project_params
-      params.fetch(:project, {:title, :description})
+      params.require(:project).permit(:title, :id, :description)
     end
 end
