@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_09_025722) do
+ActiveRecord::Schema.define(version: 2020_02_17_213646) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,6 +22,28 @@ ActiveRecord::Schema.define(version: 2020_02_09_025722) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["status"], name: "index_projects_on_status"
+  end
+
+  create_table "stations", force: :cascade do |t|
+    t.integer "stop_id"
+    t.string "direction_id"
+    t.string "stop_name"
+    t.string "station_name"
+    t.string "station_descriptive_name"
+    t.integer "map_id"
+    t.boolean "ada"
+    t.boolean "red"
+    t.boolean "blue"
+    t.boolean "g"
+    t.boolean "brn"
+    t.boolean "p"
+    t.boolean "pexp"
+    t.boolean "y"
+    t.boolean "pnk"
+    t.boolean "o"
+    t.jsonb "location"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "users", force: :cascade do |t|
