@@ -8,4 +8,6 @@ Rails.application.routes.draw do
       resource :sessions, only: [:create, :destroy]
     end 
   end
+  root 'home#welcome', as: :unauthenticated_root
+
 end
