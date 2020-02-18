@@ -5,8 +5,13 @@ class CtaApi
     self.class.get("http://www.transitchicago.com/api/1.0/routes.aspx", @options)
   end 
 
-  def trains(mapid) 
-    self.class.get("http://lapi.transitchicago.com/api/1.0/ttarrivals.aspx?key=#{ENV['CTA_TRAIN_TRACKER_SECRET_KEY']}&mapid=#{mapid}&outputType=JSON")
+  #api requires URL query sting method :/ 
+  def train_tracker_params_to_url(params)
+    params.keys.map{|key| "&#{key.to_s}=#{params[key]}"}.join
+  end 
+
+  def train_tracker(params) 
+    self.class.get("http://lapi.transitchicago.com/api/1.0/ttarrivals.aspx?key=#{ENV['CTA_TRAIN_TRACKER_SECRET_KEY']}#{train_tracker_params_to_url(params)}")
   end 
 
   def stations 
@@ -17,8 +22,19 @@ class CtaApi
     stations.select{|c| c[color] && c["station_name"] == station_name }
   end
   
-  def train_lines
-    ["red", "blue", "g", "brn", "p", "pexp", "y", "pnk", "o"]
+  def train_list
+    [
+      {code: "red", name: "Red"}, 
+      {code: "blue", name: "Blue"}, 
+      {code: "g", label: "Orange"},
+      {code: "brn", label: "Brown"},
+      {code: "p", label: "Purple"},
+      {code: "pexp", label: "Purple Express"},
+      {code: "y", label: "Yellow"}, 
+      {code: "pnk", label: "Pink"},
+      {code: "o", label: "Orange"},
+    ]
+
   end 
 
   def stations_by_train_lines 
@@ -28,7 +44,7 @@ class CtaApi
 
   def next_train_from_home
     map_id = find_station.first["map_id"]
-    train_data = trains(map_id)
+    train_data = train_tracker(map_id)
     trains = train_data["ctatt"]["eta"].map do |train|
       parse_train(train)
     end 
@@ -36,7 +52,7 @@ class CtaApi
 
   def next_train_from_work
     map_id = find_station(color: "pnk", station_name: "18th").first["map_id"]
-    train_data = trains(map_id)
+    train_data = train_tracker(map_id)
     trains = train_data["ctatt"]["eta"].map do |train|
       parse_train(train)
     end 

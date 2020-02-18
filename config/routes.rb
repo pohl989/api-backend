@@ -5,7 +5,9 @@ Rails.application.routes.draw do
     namespace :v1 do
       resources :users 
       resources :projects 
-      resources :stations, only: [:index, :show]
+      resources :stations, only: :index
+      resources :trains, only: :index
+      resources :train_tracker, only: [:index]
       resource :sessions, only: [:create, :destroy]
     end 
   end
