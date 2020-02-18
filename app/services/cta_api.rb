@@ -11,7 +11,7 @@ class CtaApi
   end 
 
   def train_tracker(params) 
-    self.class.get("http://lapi.transitchicago.com/api/1.0/ttarrivals.aspx?key=#{ENV['CTA_TRAIN_TRACKER_SECRET_KEY']}#{train_tracker_params_to_url(params)}")
+    self.class.get("http://lapi.transitchicago.com/api/1.0/ttarrivals.aspx?key=#{ENV['CTA_TRAIN_TRACKER_SECRET_KEY']}&outputType=JSON#{train_tracker_params_to_url(params)}")
   end 
 
   def stations 

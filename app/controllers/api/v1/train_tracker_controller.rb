@@ -3,9 +3,9 @@ class Api::V1::TrainTrackerController < ApplicationController
   def index 
     tracker = CtaApi.new.train_tracker(train_tracker_params)
     if tracker.ok? 
-      render json: tracker, status: :ok
+      render json: tracker.body, status: :ok
     else  
-      render json: tracker, status: :unprocessable_entity
+      render json: tracker.body, status: :unprocessable_entity
     end
   end
   
