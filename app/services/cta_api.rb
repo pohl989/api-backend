@@ -26,7 +26,7 @@ class CtaApi
     [
       {code: "red", name: "Red"}, 
       {code: "blue", name: "Blue"}, 
-      {code: "g", label: "Orange"},
+      {code: "g", label: "Green"},
       {code: "brn", label: "Brown"},
       {code: "p", label: "Purple"},
       {code: "pexp", label: "Purple Express"},
