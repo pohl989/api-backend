@@ -24,15 +24,15 @@ class CtaApi
   
   def train_list
     [
-      {code: "red", name: "Red", background_color: "#c82033"}, 
-      {code: "blue", name: "Blue", background_color: "#17a0db" }, 
-      {code: "g", name: "Green",  background_color: "#119d49" },
-      {code: "brn", name: "Brown",  background_color: "#63361c" },
-      {code: "p", name: "Purple",  background_color: "#542e91" },
+      {code: "red", name: "Red", background_color: "#c82033", color_name: "red"}, 
+      {code: "blue", name: "Blue", background_color: "#17a0db", color_name: "blue" }, 
+      {code: "g", name: "Green",  background_color: "#119d49", color_name: "green" },
+      {code: "brn", name: "Brown",  background_color: "#63361c", color_name: "brown" },
+      {code: "p", name: "Purple",  background_color: "#542e91", color_name: "violet" },
       # {code: "pexp", name: "Purple Express",  background_color: "#542e91" },
-      {code: "y", name: "Yellow",  background_color: "#f5e50d" }, 
-      {code: "pnk", name: "Pink", background_color: "#e37fa7" },
-      {code: "o", name: "Orange",  background_color: "#ef4925" },
+      {code: "y", name: "Yellow",  background_color: "#f5e50d", color_name: "yellow" }, 
+      {code: "pnk", name: "Pink", background_color: "#e37fa7", color_name: "pink" },
+      {code: "o", name: "Orange",  background_color: "#ef4925", color_name: "orange" },
     ]
 
   end 
