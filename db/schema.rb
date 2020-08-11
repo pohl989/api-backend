@@ -10,10 +10,30 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_17_213646) do
+ActiveRecord::Schema.define(version: 2020_08_11_152949) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "condos", force: :cascade do |t|
+    t.decimal "price", default: "300000.0"
+    t.decimal "hoa", default: "400.0"
+    t.decimal "tax"
+    t.decimal "insurance"
+    t.string "name"
+    t.string "notes"
+    t.bigint "mortgage_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["mortgage_id"], name: "index_condos_on_mortgage_id"
+  end
+
+  create_table "mortgages", force: :cascade do |t|
+    t.decimal "rate", default: "2.875"
+    t.integer "years", default: 30
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "projects", force: :cascade do |t|
     t.string "title"

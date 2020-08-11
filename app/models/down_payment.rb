@@ -1,0 +1,2 @@
+class DownPayment < ApplicationRecord
+end
